@@ -1,0 +1,84 @@
+@tailwind base;
+
+@font-face {
+  font-family: "iA Writer Duo";
+  src: url("/fonts/sans.ttf");
+}
+
+@font-face {
+  font-family: "iA Writer Mono";
+  src: url("/fonts/mono.ttf");
+}
+
+@layer base {
+  :root {
+    --primary: #a5bc79;
+    --primary-fg: #ffffff;
+
+    --secondary: #eeebd6;
+
+    --bg: #fcf6e5;
+    --fg: #5f6a71;
+
+    --muted-fg: #859082;
+  }
+
+  .dark {
+    --secondary: #252a2d;
+
+    --bg: #2e343a;
+    --fg: #d1c6ad;
+
+    --muted-fg: #9fa9a0;
+  }
+
+  body {
+    @apply text-foreground bg-background dark:border-gray-700;
+  }
+}
+
+input[type="checkbox"] {
+  @apply checkbox rounded appearance-none border-primary border-2 [--chkfg:transparent] [--chkbg:transparent];
+  background-color: var(--chkbg) !important;
+  background-image: linear-gradient(
+      -45deg,
+      transparent 65%,
+      var(--chkbg) 65.99%
+    ),
+    linear-gradient(45deg, transparent 75%, var(--chkbg) 75.99%),
+    linear-gradient(-45deg, var(--chkbg) 40%, transparent 40.99%),
+    linear-gradient(
+      45deg,
+      var(--chkbg) 30%,
+      var(--chkfg) 30.99%,
+      var(--chkfg) 40%,
+      transparent 40.99%
+    ),
+    linear-gradient(-45deg, var(--chkfg) 50%, var(--chkbg) 50.99%) !important;
+}
+
+input[type="checkbox"][checked] {
+  @apply [--chkfg:white] [--chkbg:var(--primary)];
+}
+
+.task-list-item input[type="checkbox"] {
+  @apply pointer-events-none my-0 !size-5 inline-flex self-center align-middle mb-1;
+}
+
+.task-list-item {
+  @apply align-middle my-4;
+}
+
+.prose
+  :where(blockquote p:last-of-type):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::after {
+  content: none;
+}
+
+.prose
+  :where(blockquote p:first-of-type):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::before {
+  content: none;
+}

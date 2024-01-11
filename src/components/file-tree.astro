@@ -1,0 +1,65 @@
+---
+import type { TreeNode } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+
+const INDENT = 12;
+const DEFAULT_INDENT = 26;
+
+interface Props {
+  tree: Array<TreeNode>;
+  indent?: number;
+}
+
+const { tree, indent = DEFAULT_INDENT } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname.slice(1);
+---
+
+<div class="space-y-1">
+  {
+    tree.map((node) => {
+      if (node.children) {
+        return (
+          <div class="collapse h-min">
+            <input
+              type="checkbox"
+              class="peer relative z-10"
+              transition:persist
+            />
+            <div
+              class="capitalize peer-checked:[&>span>svg]:rotate-90 text-muted-foreground peer-hover:text-foreground py-1 h-min peer-hover:bg-gray-600/5 rounded-lg collapse-title"
+              style={{ paddingLeft: indent + "px" }}
+            >
+              <span class="relative">
+                <Icon
+                  name="tabler:chevron-right"
+                  size={18}
+                  class="absolute -left-[20px] top-1/2 -translate-y-1/2 duration-200"
+                />
+                {node.name.replaceAll("-", " ")}
+              </span>
+            </div>
+            <div class="collapse-content">
+              <Astro.self tree={node.children} indent={indent + INDENT} />
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <a
+          href={`/${node.path}`}
+          class={cn(
+            "block py-1 px-3 hover:bg-gray-600/5 rounded-lg capitalize text-muted-foreground hover:text-foreground",
+            node.path.startsWith(pathname) &&
+              "bg-primary text-primary-foreground leading-snug hover:text-primary-foreground hover:bg-primary",
+          )}
+          style={{ paddingLeft: indent + "px" }}
+        >
+          {node.name.replaceAll("-", " ")}
+        </a>
+      );
+    })
+  }
+</div>

@@ -1,0 +1,23 @@
+<script is:inline>
+  const setDarkMode = () => {
+    if (typeof window !== 'undefined') {
+      const isSystemColorSchemeDark = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches;
+
+      const storageTheme = localStorage.getItem('theme');
+
+      if (!storageTheme && isSystemColorSchemeDark) {
+        document.documentElement.classList.add('dark');
+      } else if (storageTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    }
+  };
+
+  // Runs on initial navigation
+  setDarkMode();
+
+  // Runs on view transitions navigation
+  document.addEventListener('astro:after-swap', setDarkMode);
+</script>

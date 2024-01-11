@@ -1,0 +1,41 @@
+{
+  "name": "vault",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "fetch": "bun run ./src/lib/fetch.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.4.1",
+    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/react": "^3.0.9",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/tailwind": "^5.1.0",
+    "@iconify-json/tabler": "^1.1.103",
+    "@portaljs/remark-wiki-link": "^1.1.2",
+    "@radix-ui/react-accordion": "^1.1.2",
+    "astro": "^4.1.1",
+    "astro-icon": "^1.0.2",
+    "clsx": "^2.1.0",
+    "remark-breaks": "^4.0.0",
+    "remark-smartypants": "^2.1.0",
+    "remark-wiki-link": "^2.0.1",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.3.3",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "daisyui": "^4.6.0",
+    "prettier": "^3.1.1",
+    "prettier-plugin-astro": "^0.12.3"
+  }
+}

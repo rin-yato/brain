@@ -1,0 +1,68 @@
+<input type="checkbox" id="theme-toggle" />
+<label for="theme-toggle" class="duration-200 ease-in-out">Toggle</label>
+
+<style>
+  input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 30px;
+    background: var(--primary);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+  }
+
+  label:after {
+    @apply duration-300 ease-out;
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+  }
+
+  input:checked + label {
+    background: rgb(190, 190, 190);
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+  }
+
+  label:active:after {
+    width: 30px;
+  }
+</style>
+
+<script>
+  const themeToggle = document.querySelector("#theme-toggle")! as any;
+
+  window.addEventListener("astro:load", () => {
+    const currentTheme = window.localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      themeToggle.checked = true;
+    } else {
+      themeToggle.checked = false;
+    }
+  });
+
+  themeToggle.addEventListener("change", (event: any) => {
+    if (event.target.checked) {
+      window.localStorage.setItem("theme", "dark");
+    } else {
+      window.localStorage.setItem("theme", "light");
+    }
+    window.location.reload();
+  });
+</script>

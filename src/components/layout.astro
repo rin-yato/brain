@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import { getCollection } from "astro:content";
+import { ViewTransitions } from "astro:transitions";
+import FileTree from "./file-tree.astro";
+import { cn } from "@/lib/utils";
+
+const contents = await getCollection("obsidian");
+
+const allIds = contents.map((item) => item.id.replace(".md", ""));
+
+export interface TreeNode {
+  name: string;
+  path: string;
+  children?: TreeNode[];
+}
+
+function buildTree(filePaths: string[]): TreeNode[] {
+  const rootNodes: TreeNode[] = [];
+
+  filePaths.forEach((filePath) => {
+    const pathSegments = filePath.split("/");
+    let currentNodes = rootNodes;
+    let currentPath = "";
+
+    pathSegments.forEach((segment, index) => {
+      currentPath += `${segment}/`;
+
+      let nextNode = currentNodes.find((node) => node.name === segment);
+
+      if (!nextNode) {
+        nextNode = { name: segment, path: currentPath };
+
+        if (index === pathSegments.length - 1) {
+          // Leaf node (file), no need for children array
+          currentNodes.push(nextNode);
+        } else {
+          // Non-leaf node (directory), create children array
+          nextNode.children = [];
+          currentNodes.push(nextNode);
+        }
+      }
+
+      currentNodes = nextNode.children || [];
+    });
+  });
+
+  return rootNodes;
+}
+
+const tree = buildTree(allIds);
+---
+
+<html lang="en">
+  <head>
+    <ViewTransitions />
+  </head>
+  <body class="flex min-h-dvh">
+    <aside
+      class="border-r sticky top-0 max-h-dvh p-5 bg-secondary max-w-xs w-full"
+    >
+      <h1 class="text-xl py-5 pl-3 font-medium tracking-tighter">
+        RinYato's brain
+      </h1>
+      <FileTree tree={tree} />
+    </aside>
+    <main class="py-5 px-20 w-full">
+      <article
+        class={cn(
+          "mx-auto prose prose-everforest max-w-3xl",
+          "prose-headings:text-2xl prose-headings:font-bold",
+          "prose-h3:text-xl",
+          "prose-p:text-xl prose-p:leading-[1.7]",
+          "hover:prose-a:brightness-90",
+          "prose-li:text-xl prose-ol:ml-5",
+          "prose-li:has-[input]:list-none",
+        )}
+      >
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>
