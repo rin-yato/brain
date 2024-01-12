@@ -4,6 +4,8 @@ import { getCollection } from "astro:content";
 import { ViewTransitions } from "astro:transitions";
 import FileTree from "./file-tree.astro";
 import { cn } from "@/lib/utils";
+import SetTheme from "./set-theme.astro";
+import SelectTheme from "./select-theme.astro";
 
 const contents = await getCollection("obsidian");
 
@@ -53,12 +55,16 @@ const tree = buildTree(allIds);
 
 <html lang="en">
   <head>
+    <SetTheme />
     <ViewTransitions />
   </head>
   <body class="flex min-h-dvh">
     <aside
       class="border-r sticky top-0 max-h-dvh p-5 bg-secondary max-w-xs w-full"
     >
+      <div class="mb-3 pl-3">
+        <SelectTheme transition:persist />
+      </div>
       <h1 class="text-xl py-5 pl-3 font-medium tracking-tighter">
         RinYato's brain
       </h1>

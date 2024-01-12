@@ -48,14 +48,13 @@
 <script>
   const themeToggle = document.querySelector("#theme-toggle")! as any;
 
-  window.addEventListener("astro:load", () => {
-    const currentTheme = window.localStorage.getItem("theme");
-    if (currentTheme === "dark") {
-      themeToggle.checked = true;
-    } else {
-      themeToggle.checked = false;
-    }
-  });
+  const currentTheme = window.localStorage.getItem("theme");
+
+  if (currentTheme === "dark") {
+    themeToggle.checked = true;
+  } else {
+    themeToggle.checked = false;
+  }
 
   themeToggle.addEventListener("change", (event: any) => {
     if (event.target.checked) {
