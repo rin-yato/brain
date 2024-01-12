@@ -21,6 +21,8 @@
     --fg: #5f6a71;
 
     --muted-fg: #859082;
+
+    --border: #f3f4f6;
   }
 
   .dark {
@@ -30,11 +32,17 @@
     --fg: #d1c6ad;
 
     --muted-fg: #9fa9a0;
+
+    --border: #44403c;
   }
 
   body {
-    @apply text-foreground bg-background dark:border-gray-700;
+    @apply text-foreground bg-background;
   }
+}
+
+* {
+  @apply border-secondary;
 }
 
 input[type="checkbox"] {

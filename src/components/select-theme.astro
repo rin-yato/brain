@@ -59,9 +59,10 @@
   themeToggle.addEventListener("change", (event: any) => {
     if (event.target.checked) {
       window.localStorage.setItem("theme", "dark");
+      window.document.documentElement.classList.add("dark");
     } else {
       window.localStorage.setItem("theme", "light");
+      window.document.documentElement.classList.remove("dark");
     }
-    window.location.reload();
   });
 </script>
