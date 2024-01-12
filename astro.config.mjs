@@ -17,7 +17,7 @@ export default defineConfig({
   markdown: {
     gfm: true,
     syntaxHighlight: "shiki",
-    smartypants: false,
+    smartypants: true,
     rehypePlugins: [
       () => (tree) =>
         visit(tree, (node) => {

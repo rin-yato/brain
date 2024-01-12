@@ -16,7 +16,7 @@ The phrase I always use to avoid doing the things that I'm supposed to do, to es
 > "It's okay, I'll only sleep for a bit."
 > "It's okay, ..."
 >
->  *RinYato*.
+>  — *RinYato*.
 
 
 ## It's not okay.
