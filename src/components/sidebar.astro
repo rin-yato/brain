@@ -1,0 +1,89 @@
+---
+import type { TreeNode } from "@/lib/types";
+import SelectTheme from "./select-theme.astro";
+import FileTree from "./file-tree.astro";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  tree: Array<TreeNode>;
+  minutesRead: string;
+};
+
+const { tree, minutesRead } = Astro.props;
+---
+
+<aside
+  id="sidebar"
+  aria-expanded="true"
+  class="border-r duration-300 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 overflow-x-clip max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
+>
+  <div class="m-5">
+    <div class="mb-3 pl-3">
+      <SelectTheme transition:persist />
+    </div>
+    <h1 class="text-xl min-w-max py-5 pl-3 font-medium tracking-tighter">
+      RinYato's brain
+    </h1>
+    <FileTree tree={tree} />
+  </div>
+</aside>
+
+<div
+  aria-describedby="floating nav for mobile"
+  id="floating-nav"
+  class="fixed flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-48 h-14 rounded-full bg-secondary"
+>
+  <button
+    id="sidebar-toggle"
+    class="bg-background cursor-default hover:ring-1 ring-primary duration-300 active:scale-90 flex items-center justify-center aspect-square rounded-full"
+  >
+    <Icon name="tabler:menu" size={24} />
+  </button>
+
+  <div
+    class="flex items-center justify-center bg-background rounded-full flex-1"
+  >
+    {minutesRead}
+  </div>
+</div>
+
+<script>
+  function addToggleSidebarListener() {
+    const sidebar = document.getElementById("sidebar")!;
+    const sidebarToggle = document.getElementById("sidebar-toggle")!;
+
+    sidebarToggle.addEventListener("click", () => {
+      const isSidebarOpen = sidebar.ariaExpanded === "true";
+      if (!isSidebarOpen) {
+        document.body.style.overflow = "hidden";
+        document.body.classList.add("overflow-clip", "h-dvh");
+        sidebar.setAttribute("aria-expanded", "true");
+      } else {
+        document.body.style.overflow = "auto";
+        sidebar.removeAttribute("aria-expanded");
+      }
+    });
+  }
+
+  function hideFloatingNavOnScroll() {
+    const floatingNav = document.getElementById("floating-nav")!;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 35) {
+        floatingNav.setAttribute("aria-hidden", "true");
+      } else {
+        floatingNav.removeAttribute("aria-hidden");
+      }
+
+      setTimeout(() => {
+        floatingNav.removeAttribute("aria-hidden");
+      }, 2000);
+    });
+  }
+
+  addToggleSidebarListener();
+
+  document.addEventListener("astro:after-swap", () => {
+    addToggleSidebarListener();
+  });
+</script>

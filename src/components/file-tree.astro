@@ -16,7 +16,7 @@ const { tree, indent = DEFAULT_INDENT } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname.slice(1);
 ---
 
-<div class="space-y-1">
+<div class="space-y-1 min-w-max">
   {
     tree.map((node) => {
       if (node.children) {

@@ -90,3 +90,69 @@ input[type="checkbox"][checked] {
   )::before {
   content: none;
 }
+
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  @apply font-normal text-foreground;
+}
+
+.prose
+  :where(code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::before {
+  content: none;
+}
+
+.prose
+  :where(code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::after {
+  content: none;
+}
+
+code {
+  @apply !bg-secondary py-1.5 px-3 rounded-xl;
+}
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 3rem;
+}
+
+span[data-rehype-pretty-code-figure] > code {
+  @apply bg-secondary py-1.5 !px-3 rounded-xl;
+}
+
+figcaption[data-rehype-pretty-code-title] {
+  @apply text-base md:text-lg bg-secondary px-5 pb-5 pt-4 translate-y-4 rounded-t-2xl;
+}

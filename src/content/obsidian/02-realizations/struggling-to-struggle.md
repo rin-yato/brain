@@ -1,10 +1,9 @@
----
+
 date: 10-Jan-2024
-status: #status/unprocessed 
+status: #status/unprocessed
 type: #type/thoughts
 area: #area/cultivation #area/life
 
-dg-publish: true
 ---
 
 
@@ -12,9 +11,9 @@ dg-publish: true
 
 The phrase I always use to avoid doing the things that I'm supposed to do, to escape the struggle, and to seek comfort and entertainment.
 
-> "It's okay, let's do it tomorrow."
-> "It's okay, I'll only sleep for a bit."
-> "It's okay, ..."
+> It's okay, let's do it tomorrow.  
+> It's okay, I'll only sleep a bit.  
+> It's okay, ...
 >
 >  — *RinYato*.
 

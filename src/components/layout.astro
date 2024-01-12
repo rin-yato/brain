@@ -2,20 +2,14 @@
 import "../styles/global.css";
 import { getCollection } from "astro:content";
 import { ViewTransitions } from "astro:transitions";
-import FileTree from "./file-tree.astro";
 import { cn } from "@/lib/utils";
-import SetTheme from "./set-theme.astro";
-import SelectTheme from "./select-theme.astro";
+import SetTheme from "../components/set-theme.astro";
+import Sidebar from "../components/sidebar.astro";
+import type { TreeNode } from "@/lib/types";
 
 const contents = await getCollection("obsidian");
 
 const allIds = contents.map((item) => item.id.replace(".md", ""));
-
-export interface TreeNode {
-  name: string;
-  path: string;
-  children?: TreeNode[];
-}
 
 function buildTree(filePaths: string[]): TreeNode[] {
   const rootNodes: TreeNode[] = [];
@@ -51,39 +45,92 @@ function buildTree(filePaths: string[]): TreeNode[] {
 }
 
 const tree = buildTree(allIds);
+
+const { minutesRead } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <SetTheme />
     <ViewTransitions />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body class="flex min-h-dvh">
-    <aside
-      class="border-r sticky bg-secondary top-0 max-h-dvh p-5 max-w-xs w-full"
-    >
-      <div class="mb-3 pl-3">
-        <SelectTheme transition:persist />
-      </div>
-      <h1 class="text-xl py-5 pl-3 font-medium tracking-tighter">
-        RinYato's brain
-      </h1>
-      <FileTree tree={tree} />
-    </aside>
-    <main class="py-5 px-20 w-full">
+  <body class="flex min-h-dvh overscroll-none">
+    <Sidebar tree={tree} minutesRead={minutesRead} />
+    <main class="transition-all p-5 flex-1 md:px-20 pb-36">
       <article
         class={cn(
           "mx-auto prose prose-everforest max-w-3xl",
-          "prose-headings:text-2xl prose-headings:font-bold",
-          "prose-h3:text-xl",
-          "prose-p:text-xl prose-p:leading-[1.7]",
+          "prose-headings:text-xl md:prose-headings:text-2xl prose-headings:font-bold",
+          "prose-h3:text-base md:prose-h3:text-xl",
+          "prose-p:text-base md:prose-p:text-xl prose-p:!leading-[1.7]",
           "hover:prose-a:brightness-90",
-          "prose-li:text-xl prose-ol:ml-5",
+          "prose-li:text-lg md:prose-li:text-xl prose-ol:ml-5",
           "prose-li:has-[input]:list-none",
+          "prose-blockquote:font-normal prose-blockquote:not-italic",
+          "mt-8 [&>:last-child]:mt-16",
+          "prose-h2:mt-20 [&>h2:first-of-type]:mt-0",
+          "prose-code:text-base md:prose-code:text-lg prose-pre:rounded-2xl",
         )}
       >
         <slot />
       </article>
     </main>
+    <script>
+      function createCopyButtons() {
+        const codeFigure = document.querySelectorAll(
+          "figure[data-rehype-pretty-code-figure]",
+        );
+
+        codeFigure.forEach((figure) => {
+          figure.classList.add("group");
+          const firstChild = figure.firstChild! as HTMLElement;
+          const secondChild = firstChild?.nextSibling;
+
+          const copyButton = document.createElement("button");
+          copyButton.textContent = "Copy";
+          copyButton.classList.add(
+            "bg-background",
+            "appearance-none",
+            "text-base",
+            "px-3",
+            "py-1",
+            "rounded-lg",
+            "duration-200",
+            "opacity-0",
+            "group-hover:opacity-100",
+            "hover:text-primary",
+            "text-foreground",
+            "absolute",
+            "top-2",
+            "right-2",
+          );
+
+          const rawCode =
+            figure.querySelector("code")?.innerText ??
+            "something went wrong, and i don't know what it is 😂";
+
+          copyButton.addEventListener("click", () => {
+            navigator.clipboard.writeText(rawCode);
+            copyButton.textContent = "Copied!";
+
+            setTimeout(() => {
+              copyButton.textContent = "Copy";
+            }, 2000);
+          });
+
+          firstChild.appendChild(copyButton);
+          firstChild.classList.add("relative");
+        });
+      }
+
+      createCopyButtons();
+
+      document.addEventListener("astro:after-swap", () => {
+        createCopyButtons();
+      });
+    </script>
   </body>
 </html>

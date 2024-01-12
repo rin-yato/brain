@@ -1,14 +1,13 @@
----
+
 date: 04-Jan-2024
 status: #status/processed 
 type: #type/doc
 area: #area/tech #area/cheatsheet
 keyword: #keyword/typescript #keyword/tsconfig
 
-dg-publish: true
 ---
 
-```json title:tsConfig.json
+```json title="tsConfig.json"
 {
   "compilerOptions": {
     /* Base Options: */

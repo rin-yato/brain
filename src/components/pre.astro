@@ -1,0 +1,14 @@
+---
+// type Props = {};
+
+const { raw, ...props } = Astro.props;
+const lang = props.lang ?? "ts";
+console.log('pre',{raw, props})
+---
+
+<pre {...props} class="mmmmm">
+  <div class="code-header">
+    {lang}
+  </div>
+  <slot />
+</pre>
