@@ -14,7 +14,7 @@ const { tree, minutesRead } = Astro.props;
 
 <aside
   id="sidebar"
-  aria-expanded="true"
+  class="z-40 border-r duration-300 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
   class="border-r duration-300 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 overflow-x-clip max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
 >
   <div class="m-5">
@@ -31,6 +31,7 @@ const { tree, minutesRead } = Astro.props;
 <div
   aria-describedby="floating nav for mobile"
   id="floating-nav"
+  class="fixed z-50 flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-48 h-14 rounded-full bg-secondary"
   class="fixed flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-48 h-14 rounded-full bg-secondary"
 >
   <button
@@ -59,7 +60,7 @@ const { tree, minutesRead } = Astro.props;
         document.body.classList.add("max-lg:overflow-clip");
       } else {
         // document.body.style.overflow = "auto";
-        document.body.classList.remove("max:lgoverflow-clip");
+        document.body.classList.remove("max-lg:overflow-clip");
         sidebar.removeAttribute("aria-expanded");
       }
     });
@@ -87,3 +88,4 @@ const { tree, minutesRead } = Astro.props;
     addToggleSidebarListener();
   });
 </script>
+

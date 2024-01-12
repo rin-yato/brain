@@ -57,9 +57,9 @@ const { minutesRead } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body class="flex min-h-dvh overflow-x-clip overscroll-none">
+  <body class="min-h-dvh lg:flex overflow-x-clip overscroll-none">
     <Sidebar tree={tree} minutesRead={minutesRead} />
-    <main class="transition-all p-5 flex-1 md:px-20 pb-36">
+    <main class="p-5 md:px-20 mx-auto pb-36">
       <article
         class={cn(
           "mx-auto prose prose-everforest max-w-3xl",
@@ -70,9 +70,9 @@ const { minutesRead } = Astro.props;
           "prose-li:text-lg md:prose-li:text-xl prose-ol:ml-5",
           "prose-li:has-[input]:list-none",
           "prose-blockquote:font-normal prose-blockquote:not-italic",
-          "mt-8 [&>:last-child]:mt-16",
+          "mt-6 [&>:last-child]:mt-16",
           "prose-h2:mt-20 [&>h2:first-of-type]:mt-0",
-          "prose-code:text-base md:prose-code:text-lg prose-pre:rounded-2xl",
+          "prose-code:text-sm md:prose-code:text-lg prose-pre:rounded-2xl",
         )}
       >
         <slot />
