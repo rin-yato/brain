@@ -22,7 +22,7 @@ const rehypePrettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://brain-nine.vercel.app",
+  site: "https://vault.rinyato.com",
   redirects: {
     "/": "/guide",
   },
