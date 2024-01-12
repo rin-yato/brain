@@ -22,7 +22,6 @@ const rehypePrettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://vault.rinyato.com",
   redirects: {
     "/": "/guide",
   },
