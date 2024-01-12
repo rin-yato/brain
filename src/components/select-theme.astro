@@ -1,5 +1,9 @@
 <input type="checkbox" id="theme-toggle" />
-<label for="theme-toggle" class="duration-200 ease-in-out">Toggle</label>
+<label
+  for="theme-toggle"
+  class="duration-200 ease-in-out dark:after:-translate-x-full dark:after:left-[calc(100%-5px)] dark:bg-gray-600"
+  >Toggle</label
+>
 
 <style>
   input[type="checkbox"] {
@@ -31,38 +35,39 @@
     border-radius: 90px;
   }
 
-  input:checked + label {
-    background: rgb(190, 190, 190);
-  }
-
-  input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-  }
-
   label:active:after {
     width: 30px;
   }
 </style>
 
 <script>
-  const themeToggle = document.querySelector("#theme-toggle")! as any;
+  function addListener() {
+    const themeToggle = document.querySelector("#theme-toggle")! as any;
 
-  const currentTheme = window.localStorage.getItem("theme");
+    themeToggle.addEventListener("change", (event: any) => {
+      console.log(event);
+      const documentTheme =
+        window.document.documentElement.classList.contains("dark");
 
-  if (currentTheme === "dark") {
-    themeToggle.checked = true;
-  } else {
-    themeToggle.checked = false;
+      const localStorageTheme = window.localStorage.getItem("theme");
+
+      const isDarkMode = documentTheme && localStorageTheme === "dark";
+
+      console.log(isDarkMode);
+
+      if (!isDarkMode) {
+        window.localStorage.setItem("theme", "dark");
+        window.document.documentElement.classList.add("dark");
+      } else {
+        window.localStorage.setItem("theme", "light");
+        window.document.documentElement.classList.remove("dark");
+      }
+    });
   }
 
-  themeToggle.addEventListener("change", (event: any) => {
-    if (event.target.checked) {
-      window.localStorage.setItem("theme", "dark");
-      window.document.documentElement.classList.add("dark");
-    } else {
-      window.localStorage.setItem("theme", "light");
-      window.document.documentElement.classList.remove("dark");
-    }
+  addListener();
+
+  document.addEventListener("astro:after-swap", (swapevent) => {
+    addListener();
   });
 </script>
