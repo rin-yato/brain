@@ -1,12 +1,9 @@
----
+
 status: #status/processed 
 type: #type/doc 
 
-dg-publish: true
-dg-home: true
 ---
 
-[[07 Journals/An Unusual Day|An Unusual Day]]
 
 ## Status
 
