@@ -55,11 +55,11 @@ const { tree, minutesRead } = Astro.props;
     sidebarToggle.addEventListener("click", () => {
       const isSidebarOpen = sidebar.ariaExpanded === "true";
       if (!isSidebarOpen) {
-        document.body.style.overflow = "hidden";
-        document.body.classList.add("overflow-clip", "h-dvh");
         sidebar.setAttribute("aria-expanded", "true");
+        document.body.classList.add("max-lg:overflow-clip");
       } else {
-        document.body.style.overflow = "auto";
+        // document.body.style.overflow = "auto";
+        document.body.classList.remove("max:lgoverflow-clip");
         sidebar.removeAttribute("aria-expanded");
       }
     });

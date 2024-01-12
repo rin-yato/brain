@@ -57,7 +57,7 @@ const { minutesRead } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body class="flex min-h-dvh overscroll-none">
+  <body class="flex min-h-dvh overflow-x-clip overscroll-none">
     <Sidebar tree={tree} minutesRead={minutesRead} />
     <main class="transition-all p-5 flex-1 md:px-20 pb-36">
       <article
