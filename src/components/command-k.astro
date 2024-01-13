@@ -1,0 +1,151 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div
+  class="fixed inset-0 p-5 z-50 bg-black/30 overflow-hidden flex md:items-center justify-center"
+>
+    <div
+      class="max-w-xl h-fit relative flex-1 !border-gray-600 dark:!border-gray-800 overflow-hidden transition-all bg-black border divide-y shadow-2xl divide-white/10 rounded-2xl"
+    >
+      <label class="relative flex items-center px-3 gap-3">
+        <Icon name="tabler:search" size={20} class="text-gray-400" />
+        <input
+          type="text"
+          class="w-full h-12 pr-4 text-white placeholder-gray-400 bg-transparent border-0 focus:ring-0 sm:text-sm focus:outline-none"
+          placeholder="What do you need?"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="options"
+        />
+      </label>
+      <ul
+        class="p-3 space-y-3 overflow-y-auto max-h-96 scroll-py-3"
+        id="options"
+        role="listbox"
+      >
+        <li
+          class="flex p-3 text-gray-300 duration-200 cursor-default select-none hover:text-white group rounded-xl hover:bg-white/5"
+          id="option-1"
+          role="option"
+          tabindex="-1"
+        >
+          <a href="#" class="flex">
+            <div class="flex items-center justify-center flex-none">
+              <ion-icon
+                name="grid-outline"
+                class="w-5 h-5 md hydrated"
+                role="img"
+                aria-label="grid outline"></ion-icon>
+            </div>
+            <div class="flex-auto ml-4">
+              <p class="text-sm">Search projects</p>
+            </div>
+          </a>
+        </li>
+        <li
+          class="flex p-3 text-gray-300 duration-200 cursor-default select-none hover:text-white group rounded-xl hover:bg-white/5"
+          id="option-1"
+          role="option"
+          tabindex="-1"
+        >
+          <a href="#" class="flex">
+            <div class="flex items-center justify-center flex-none">
+              <ion-icon
+                name="add-outline"
+                class="w-5 h-5 md hydrated"
+                role="img"
+                aria-label="add outline"></ion-icon>
+            </div>
+            <div class="flex-auto ml-4">
+              <p class="text-sm">Create another project</p>
+            </div>
+          </a>
+        </li>
+        <li
+          class="flex p-3 text-gray-300 duration-200 cursor-default select-none hover:text-white group rounded-xl hover:bg-white/5"
+          id="option-1"
+          role="option"
+          tabindex="-1"
+        >
+          <a href="#" class="flex">
+            <div class="flex items-center justify-center flex-none">
+              <ion-icon
+                name="people-outline"
+                class="w-5 h-5 md hydrated"
+                role="img"
+                aria-label="people outline"></ion-icon>
+            </div>
+            <div class="flex-auto ml-4">
+              <p class="text-sm">Search team</p>
+            </div>
+          </a>
+        </li>
+        <li
+          class="flex p-3 text-gray-300 duration-200 cursor-default select-none hover:text-white group rounded-xl hover:bg-white/5"
+          id="option-1"
+          role="option"
+          tabindex="-1"
+        >
+          <a href="#" class="flex">
+            <div class="flex items-center justify-center flex-none">
+              <ion-icon
+                name="add-outline"
+                class="w-5 h-5 md hydrated"
+                role="img"
+                aria-label="add outline"></ion-icon>
+            </div>
+            <div class="flex-auto ml-4">
+              <p class="text-sm">Create a new team</p>
+            </div>
+          </a>
+        </li>
+        <!-- More items... -->
+      </ul>
+      <div
+        class="flex flex-wrap items-center bg-black py-2.5 px-4 text-xs text-gray-300"
+      >
+        <kbd
+          class="flex items-center justify-center w-5 h-5 mx-1 font-semibold text-white border rounded bg-white/5 border-white/5 sm:mx-2"
+        >
+          <ion-icon
+            name="return-down-back-outline"
+            role="img"
+            class="md hydrated"
+            aria-label="return down back outline"></ion-icon>
+        </kbd>
+        <span class="sm:hidden"> to select</span>
+        <span class="hidden sm:inline"> to select</span>
+        <kbd
+          class="flex items-center justify-center w-5 h-5 mx-1 font-semibold text-white border rounded bg-white/5 border-white/5 sm:mx-2"
+        >
+          <ion-icon
+            name="arrow-down-outline"
+            role="img"
+            class="md hydrated"
+            aria-label="arrow down outline"></ion-icon>
+        </kbd>
+        <kbd
+          class="flex items-center justify-center w-5 h-5 mx-1 font-semibold text-white border rounded bg-white/5 border-white/5 sm:mx-2"
+        >
+          <ion-icon
+            name="arrow-up-outline"
+            role="img"
+            class="md hydrated"
+            aria-label="arrow up outline"></ion-icon>
+        </kbd>
+        <span class="hidden sm:inline"> to navigate</span>
+        <kbd
+          class="flex items-center justify-center h-5 px-2 mx-1 font-semibold text-white border rounded border-white/5 w-7 bg-white/5 sm:mx-2"
+        >
+          esc
+        </kbd>
+        to close
+        <kbd
+          class="flex items-center justify-center w-5 h-5 px-2 mx-1 font-semibold text-white border rounded border-white/5 bg-white/5 sm:mx-2"
+        >
+          BS
+        </kbd>
+      </div>
+    </div>
+</div>

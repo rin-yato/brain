@@ -37,12 +37,20 @@
   }
 
   body {
-    @apply text-foreground bg-background;
+    @apply text-foreground bg-background relative;
   }
 }
 
 * {
   @apply border-secondary;
+}
+
+p:has(span.tag) {
+  @apply !leading-[1.9];
+}
+
+span.tag {
+  @apply text-sm md:text-base lg:text-lg bg-secondary px-3 py-1 mr-1 rounded-2xl;
 }
 
 input[type="checkbox"] {

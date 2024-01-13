@@ -1,7 +1,7 @@
 import * as fs from "fs/promises";
 import path from "path";
 
-const privateFolders = ["08 Me", "07 Journals", "05 Workspaces"];
+const privateFolders = ["08 Me", "07 Journals", "05 Workspaces", "09 Media"];
 const exclude = [
   ".git",
   ".obsidian",
@@ -17,6 +17,19 @@ async function main() {
     "obsidian",
   );
   const contentPath = path.join(process.cwd(), "src", "content", "obsidian");
+  const assetsPath = path.join(process.cwd(), "src", "assets");
+
+  await fs.cp(
+    path.join(obsidianPath, "09 Media"),
+    path.join(assetsPath, "09-Media"),
+    {
+      recursive: true,
+      force: true,
+    },
+  );
+
+  // raname all media files to follow URL-friendly format
+  await renameFilesAndDirectories(path.join(assetsPath, "09-Media"));
 
   try {
     // Clear out the blogs folder

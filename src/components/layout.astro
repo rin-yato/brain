@@ -5,44 +5,11 @@ import { ViewTransitions } from "astro:transitions";
 import { cn } from "@/lib/utils";
 import SetTheme from "../components/set-theme.astro";
 import Sidebar from "../components/sidebar.astro";
-import type { TreeNode } from "@/lib/types";
+import { buildTree } from "@/lib/build-tree";
 
 const contents = await getCollection("obsidian");
 
 const allIds = contents.map((item) => item.id.replace(".md", ""));
-
-function buildTree(filePaths: string[]): TreeNode[] {
-  const rootNodes: TreeNode[] = [];
-
-  filePaths.forEach((filePath) => {
-    const pathSegments = filePath.split("/");
-    let currentNodes = rootNodes;
-    let currentPath = "";
-
-    pathSegments.forEach((segment, index) => {
-      currentPath += `${segment}/`;
-
-      let nextNode = currentNodes.find((node) => node.name === segment);
-
-      if (!nextNode) {
-        nextNode = { name: segment, path: currentPath };
-
-        if (index === pathSegments.length - 1) {
-          // Leaf node (file), no need for children array
-          currentNodes.push(nextNode);
-        } else {
-          // Non-leaf node (directory), create children array
-          nextNode.children = [];
-          currentNodes.push(nextNode);
-        }
-      }
-
-      currentNodes = nextNode.children || [];
-    });
-  });
-
-  return rootNodes;
-}
 
 const tree = buildTree(allIds);
 
@@ -57,12 +24,12 @@ const { minutesRead } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body class="min-h-dvh lg:flex overflow-x-clip overscroll-none">
+  <body class="min-h-dvh lg:flex overflow-x-clip">
     <Sidebar tree={tree} minutesRead={minutesRead} />
-    <main class="p-5 md:px-20 mx-auto pb-36">
+    <main class="p-5 md:px-8 lg:px-20 mx-auto pb-36 flex-1">
       <article
         class={cn(
-          "mx-auto prose prose-everforest max-w-3xl",
+          "mx-auto prose prose-everforest w-full max-w-3xl",
           "prose-headings:text-xl md:prose-headings:text-2xl prose-headings:font-bold",
           "prose-h3:text-base md:prose-h3:text-xl",
           "prose-p:text-base md:prose-p:text-xl prose-p:!leading-[1.7]",
@@ -73,6 +40,7 @@ const { minutesRead } = Astro.props;
           "mt-6 [&>:last-child]:mt-16",
           "prose-h2:mt-20 [&>h2:first-of-type]:mt-0",
           "prose-code:text-sm md:prose-code:text-lg prose-pre:rounded-2xl",
+          "prose-img:rounded-2xl",
         )}
       >
         <slot />

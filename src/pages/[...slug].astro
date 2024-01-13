@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/components/layout.astro";
-import Pre from "@/components/pre.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("obsidian");
@@ -14,7 +13,6 @@ type Props = CollectionEntry<"obsidian">;
 
 const post = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
-console.log(post);
 ---
 
 <Layout {...post.data} {...remarkPluginFrontmatter}>

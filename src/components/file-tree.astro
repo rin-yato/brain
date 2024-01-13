@@ -53,6 +53,8 @@ const pathname = new URL(Astro.request.url).pathname.slice(1);
           class={cn(
             "block py-1 px-3 hover:bg-gray-600/5 rounded-lg capitalize text-muted-foreground hover:text-foreground",
             node.path.startsWith(pathname) &&
+              pathname !== "" &&
+              pathname !== "/" &&
               "bg-primary text-primary-foreground leading-snug hover:text-primary-foreground hover:bg-primary",
           )}
           style={{ paddingLeft: indent + "px" }}

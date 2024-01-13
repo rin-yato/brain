@@ -15,14 +15,13 @@ const { tree, minutesRead } = Astro.props;
 <aside
   id="sidebar"
   class="z-40 border-r duration-300 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
-  class="border-r duration-300 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 overflow-x-clip max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
 >
   <div class="m-5">
     <div class="mb-3 pl-3">
       <SelectTheme transition:persist />
     </div>
     <h1 class="text-xl min-w-max py-5 pl-3 font-medium tracking-tighter">
-      RinYato's brain
+      RinYato's vault
     </h1>
     <FileTree tree={tree} />
   </div>
@@ -32,7 +31,6 @@ const { tree, minutesRead } = Astro.props;
   aria-describedby="floating nav for mobile"
   id="floating-nav"
   class="fixed z-50 flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-48 h-14 rounded-full bg-secondary"
-  class="fixed flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-48 h-14 rounded-full bg-secondary"
 >
   <button
     id="sidebar-toggle"
@@ -49,6 +47,23 @@ const { tree, minutesRead } = Astro.props;
 </div>
 
 <script>
+  function setSidebarState() {
+    if (window.innerWidth < 1024) {
+      return;
+    }
+
+    const state = localStorage.getItem("sidebar-open");
+    const sidebar = document.getElementById("sidebar")!;
+    console.log(state);
+
+    if (state === "true") {
+      console.log("here");
+      sidebar.setAttribute("aria-expanded", "true");
+    } else {
+      sidebar.removeAttribute("aria-expanded");
+    }
+  }
+
   function addToggleSidebarListener() {
     const sidebar = document.getElementById("sidebar")!;
     const sidebarToggle = document.getElementById("sidebar-toggle")!;
@@ -58,34 +73,21 @@ const { tree, minutesRead } = Astro.props;
       if (!isSidebarOpen) {
         sidebar.setAttribute("aria-expanded", "true");
         document.body.classList.add("max-lg:overflow-clip");
+        localStorage.setItem("sidebar-open", "true");
       } else {
         // document.body.style.overflow = "auto";
         document.body.classList.remove("max-lg:overflow-clip");
         sidebar.removeAttribute("aria-expanded");
+        localStorage.removeItem("sidebar-open");
       }
     });
   }
 
-  function hideFloatingNavOnScroll() {
-    const floatingNav = document.getElementById("floating-nav")!;
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 35) {
-        floatingNav.setAttribute("aria-hidden", "true");
-      } else {
-        floatingNav.removeAttribute("aria-hidden");
-      }
-
-      setTimeout(() => {
-        floatingNav.removeAttribute("aria-hidden");
-      }, 2000);
-    });
-  }
-
+  setSidebarState();
   addToggleSidebarListener();
 
   document.addEventListener("astro:after-swap", () => {
+    setSidebarState();
     addToggleSidebarListener();
   });
 </script>
-

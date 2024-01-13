@@ -2,14 +2,17 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import remarkWikiLink from "remark-wiki-link";
-import rehypePrettyCode from "rehype-pretty-code";
-import remarkBreaks from "remark-breaks";
-import { visit } from "unist-util-visit";
 
 import icon from "astro-icon";
+
+import remarkWikiLink from "remark-wiki-link";
+import remarkBreaks from "remark-breaks";
 import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
+
+import rehypePrettyCode from "rehype-pretty-code";
 import { rehypeCheckbox } from "./src/lib/rehype-checkbox.mjs";
+import { remarkObsidianImg } from "./src/lib/remark-obsidian-image.mjs";
+import { rehypeHashtags } from "./src/lib/rehype-hashtags.mjs";
 
 /** @type {import('rehype-pretty-code').Options} */
 const rehypePrettyCodeOptions = {
@@ -22,9 +25,9 @@ const rehypePrettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  redirects: {
-    "/": "/guide",
-  },
+  site: "https://vault.rinyato.com",
+  compressHTML: true,
+  srcDir: "src",
   markdown: {
     gfm: true,
     syntaxHighlight: false,
@@ -32,31 +35,10 @@ export default defineConfig({
     rehypePlugins: [
       [rehypePrettyCode, rehypePrettyCodeOptions],
       rehypeCheckbox,
-      () => (tree) => {
-        visit(tree, (node) => {
-          if (node?.type === "element" && node?.tagName === "figcaption") {
-            if (!("data-rehype-pretty-code-title" in node.properties)) {
-              return;
-            }
-            node.properties.class = ["flex", "items-center"];
-            node.properties.style = "gap: 0.5rem; align-items: center;";
-            node.children = [
-              {
-                type: "element",
-                tagName: "div",
-                children: [
-                  {
-                    type: "text",
-                    value: node.children[0].value,
-                  },
-                ],
-              },
-            ];
-          }
-        });
-      },
+      rehypeHashtags,
     ],
     remarkPlugins: [
+      remarkObsidianImg,
       [
         remarkWikiLink,
         {

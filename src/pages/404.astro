@@ -1,0 +1,15 @@
+---
+import Layout from "@/components/layout.astro";
+import { Image } from "astro:assets";
+
+import NotFoundSvg from "@/assets/404.svg";
+---
+
+<Layout minutesRead="404">
+  <Image src={NotFoundSvg} alt="404" class="w-1/2 mx-auto saturate-0 my-8 opacity-70" />
+  <h1 class="text-center">Opps, Not Found.</h1>
+  <p class="text-pretty text-center">
+    Looks like the note you are looking for does not exist. If you followed a
+    link here, that mean this note is a private note.
+  </p>
+</Layout>
