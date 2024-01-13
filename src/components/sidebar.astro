@@ -14,7 +14,8 @@ const { tree, minutesRead } = Astro.props;
 
 <aside
   id="sidebar"
-  class="z-40 border-r duration-300 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
+  aria-expanded="false"
+  class="z-40 border-r duration-300 border-gray-200 dark:border-gray-700/70 lg:hidden lg:aria-expanded:block max-lg:aria-expanded:translate-x-0 max-lg:-translate-x-full lg:sticky max-lg:fixed top-0 max-lg:inset-y-0 bg-secondary max-h-dvh max-w-xs left-0"
 >
   <div class="m-5">
     <div class="mb-3 pl-3">
@@ -30,17 +31,17 @@ const { tree, minutesRead } = Astro.props;
 <div
   aria-describedby="floating nav for mobile"
   id="floating-nav"
-  class="fixed z-50 flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-48 h-14 rounded-full bg-secondary"
+  class="fixed z-50 flex p-1.5 bottom-5 border duration-300 left-1/2 -translate-x-1/2 gap-1.5 w-fit h-fit rounded-full bg-secondary"
 >
   <button
     id="sidebar-toggle"
-    class="bg-background cursor-default hover:ring-1 ring-primary duration-300 active:scale-90 flex items-center justify-center aspect-square rounded-full"
+    class="bg-background appearance-none cursor-default hover:ring-1 ring-primary duration-300 active:scale-90 flex items-center justify-center w-10 h-10 rounded-full"
   >
-    <Icon name="tabler:menu" size={24} />
+    <Icon name="tabler:menu" size={20} />
   </button>
 
   <div
-    class="flex items-center justify-center bg-background rounded-full flex-1"
+    class="flex items-center justify-center bg-background rounded-full flex-1 px-3"
   >
     {minutesRead}
   </div>

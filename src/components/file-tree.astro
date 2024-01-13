@@ -21,7 +21,7 @@ const pathname = new URL(Astro.request.url).pathname.slice(1);
     tree.map((node) => {
       if (node.children) {
         return (
-          <div class="collapse h-min">
+          <label class="collapse relative h-min">
             <input
               type="checkbox"
               class="peer relative z-10"
@@ -43,7 +43,7 @@ const pathname = new URL(Astro.request.url).pathname.slice(1);
             <div class="collapse-content">
               <Astro.self tree={node.children} indent={indent + INDENT} />
             </div>
-          </div>
+          </label>
         );
       }
 
