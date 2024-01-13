@@ -42,7 +42,11 @@
 }
 
 * {
-  @apply border-secondary;
+  @apply border-secondary selection:bg-primary selection:text-primary-foreground;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 p:has(span.tag) {

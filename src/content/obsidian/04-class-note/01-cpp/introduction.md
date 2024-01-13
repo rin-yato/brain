@@ -18,39 +18,34 @@ One of my go-to tutorial video for CPP would be [# C++ Full Course for free тЪбя
 
 These are some of the basic syntax for CPP.
 
-1. **Comments**:
-   ```cpp
+```cpp title="Comment"
 // This is a single-line comment
 
 /* This is
 a multi-line
 comment */
-   ```
+```
 
-2. **Directives**:
-   ```cpp
+```cpp title="Directives"
 #include <iostream> // Include the iostream header file
 #define PI 3.14159   // Define a constant value for PI
-   ```
+```
 
-3. **Main function**:
-   ```cpp
+```cpp title="Main Function"
 int main() {
   // Code statements go here
   return 0; // Return 0 to indicate successful execution
 }
-   ```
+```
 
-4. **Data types**:
-   ```cpp
+```cpp title="Data Types"
 int age = 25;
 float price = 9.99;
 char grade = 'A';
 bool isReady = true;
-   ```
+```
 
-5. **Variables**:
-   ```cpp
+```cpp title="Variables"
 int width; // Variable declaration
 width = 10; // Variable assignment
 
@@ -61,16 +56,14 @@ int height = 5;
 int area = width * height; 
 ```
 
-6. **Operators**:
-   ```cpp
+```cpp title="Operators"
 int a = 5, b = 3, c;
 c = a + b; // Addition operator
 c = a * b; // Multiplication operator
 c = (a == b) ? 10 : 20; // Ternary operator
-   ```
+```
 
-7. **Control flow statements**:
-   ```cpp
+```cpp title="Control flow statements"
 if (score >= 60) {
   cout << "Passed" << endl;
 } else {
@@ -89,10 +82,9 @@ while (count > 0) {
 do {
   cout << "Hello ";
 } while (condition);
-   ```
+```
 
-8. **Functions**:
-   ```cpp
+```cpp title="Function"
 // Function declaration
 int add(int a, int b);
 
@@ -103,10 +95,9 @@ int add(int a, int b) {
 
 // Function call
 int result = add(3, 4);
-   ```
+```
 
-9. **Classes and objects**:
-   ```cpp
+```cpp title="Class and Object"
 class Rectangle {
 private:
   int width;
@@ -128,8 +119,7 @@ rect.setDimensions(5, 3);
 int area = rect.getArea();
 ```
 
-10. **Standard Input and Output**:
-    ```cpp
+```cpp title="Standard Input & Output"
 #include <iostream>
 using namespace std;
 
@@ -143,3 +133,6 @@ int main() {
 ```
 
 And that's it for the basic, we'll dive deeper after I attend another class haha.
+
+
+

@@ -4,6 +4,7 @@ type: #type/doc
 
 ---
 
+A guide on how to navigation and categorized my notes.
 
 ## Status
 

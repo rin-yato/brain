@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/components/layout.astro";
+import { capitalize } from "@/lib/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("obsidian");
@@ -13,8 +14,12 @@ type Props = CollectionEntry<"obsidian">;
 
 const post = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
+
+const title = capitalize(post.slug.split("/").pop()?.replace(/-/g, " ") ?? "");
+
+console.log({ remarkPluginFrontmatter, post, title });
 ---
 
-<Layout {...post.data} {...remarkPluginFrontmatter}>
+<Layout {...post.data} {...remarkPluginFrontmatter} title={title}>
   <Content />
 </Layout>

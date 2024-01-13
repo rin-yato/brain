@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import SetTheme from "../components/set-theme.astro";
 import Sidebar from "../components/sidebar.astro";
 import { buildTree } from "@/lib/build-tree";
+import { SEO } from "astro-seo";
 
 const contents = await getCollection("obsidian");
 
@@ -13,18 +14,48 @@ const allIds = contents.map((item) => item.id.replace(".md", ""));
 
 const tree = buildTree(allIds);
 
-const { minutesRead } = Astro.props;
+const { minutesRead, title, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "article",
+          image: "/og.png",
+        },
+        article: {
+          authors: ["rinyato", "chearithorn"],
+        },
+        optional: {
+          description: description,
+        },
+      }}
+      twitter={{
+        creator: "@chearithorn",
+        card: "summary_large_image",
+        title: "A Very Descriptive Title",
+        site: "https://vault.rinyato.com",
+        image: "/og.png",
+        description: description,
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.png" }],
+      }}
+    />
+
     <SetTheme />
     <ViewTransitions />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body class="min-h-dvh lg:flex overflow-x-clip">
+  <body class="min-h-dvh no-scrollbar lg:flex overflow-x-clip">
     <Sidebar tree={tree} minutesRead={minutesRead} />
     <main class="p-5 md:px-8 lg:px-20 mx-auto pb-36 flex-1">
       <article
