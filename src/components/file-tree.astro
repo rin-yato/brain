@@ -40,7 +40,7 @@ const pathname = new URL(Astro.request.url).pathname.slice(1);
                 {node.name.replaceAll("-", " ")}
               </span>
             </div>
-            <div class="collapse-content">
+            <div class="collapse-content mt-1">
               <Astro.self tree={node.children} indent={indent + INDENT} />
             </div>
           </label>

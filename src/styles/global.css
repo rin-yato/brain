@@ -168,3 +168,28 @@ span[data-rehype-pretty-code-figure] > code {
 figcaption[data-rehype-pretty-code-title] {
   @apply text-base md:text-lg bg-secondary px-5 pb-5 pt-4 translate-y-4 rounded-t-2xl;
 }
+
+body::before {
+  @apply absolute inset-0 mix-blend-overlay dark:mix-blend-multiply pointer-events-none dark:opacity-25 opacity-35;
+  content: "";
+  z-index: 1;
+  background: url("../assets/noise.jpeg") repeat center;
+}
+
+
+#sidebar::before {
+  @apply absolute inset-0 pointer-events-none opacity-35 dark:opacity-20;
+  content: "";
+  z-index: 1;
+  background: url("../assets/noise.jpeg") repeat center;
+  mix-blend-mode: overlay;
+}
+
+
+
+#floating-nav::before {
+  @apply absolute rounded-full inset-0 mix-blend-overlay dark:mix-blend-multiply pointer-events-none dark:opacity-25 opacity-35;
+  content: "";
+  z-index: 1;
+  background: url("../assets/noise.jpeg") repeat center;
+}
