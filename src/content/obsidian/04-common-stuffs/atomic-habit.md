@@ -3,7 +3,7 @@ date: 14-Jan-2024
 status: #status/unprocessed 
 type: #type/knowledge #type/quote
 area: #area/cultivation #area/life 
-keyword: #keyword/habit #keyword/atomic-habit 
+keyword: #keyword/habit #keyword/atomic 
 
 ---
 
@@ -39,6 +39,9 @@ If people knows you as the nerd guy, and if you are proud of your identity as a 
 ## Just do it.
 
 One of the recipes for building habits is to start. Some people often make excuses, waiting for the right time or the right place. But deep down, we know it's nothing but excuses. So pull yourself together and start now!
+
+
+— End —
 
 
 
