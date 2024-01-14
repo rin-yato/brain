@@ -1,0 +1,3 @@
+## Coming soon...
+
+I'm thinking of moving blog out of my portfolio and keep them all here instead. 😵‍💫
