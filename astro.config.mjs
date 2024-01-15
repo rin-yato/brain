@@ -30,7 +30,9 @@ export default defineConfig({
   srcDir: "src",
   output: "static",
   adapter: vercel({
-    webAnalytics: true,
+    webAnalytics: {
+      enabled: true,
+    },
     imageService: true,
   }),
   markdown: {
