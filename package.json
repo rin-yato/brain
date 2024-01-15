@@ -17,6 +17,7 @@
     "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^6.1.4",
     "@iconify-json/tabler": "^1.1.103",
     "@portaljs/remark-wiki-link": "^1.1.2",
     "@radix-ui/react-accordion": "^1.1.2",

@@ -11,6 +11,7 @@ import { rehypeCheckbox } from "./src/lib/rehype-checkbox.mjs";
 import { remarkObsidianImg } from "./src/lib/remark-obsidian-image.mjs";
 import { rehypeHashtags } from "./src/lib/rehype-hashtags.mjs";
 import { remarkDescription } from "./src/lib/remark-description.mjs";
+import vercel from "@astrojs/vercel/static";
 
 /** @type {import('rehype-pretty-code').Options} */
 import compress from "astro-compress";
@@ -27,6 +28,11 @@ export default defineConfig({
   site: "https://vault.rinyato.com",
   compressHTML: true,
   srcDir: "src",
+  output: "static",
+  adapter: vercel({
+    webAnalytics: true,
+    imageService: true,
+  }),
   markdown: {
     gfm: true,
     syntaxHighlight: false,
@@ -59,4 +65,3 @@ export default defineConfig({
     compress({ CSS: true, HTML: true, JavaScript: true, SVG: true }),
   ],
 });
-
