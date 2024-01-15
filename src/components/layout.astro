@@ -7,6 +7,7 @@ import SetTheme from "../components/set-theme.astro";
 import Sidebar from "../components/sidebar.astro";
 import { buildTree } from "@/lib/build-tree";
 import { SEO } from "astro-seo";
+import { AstroFont } from "astro-font";
 
 const contents = await getCollection("obsidian");
 
@@ -14,7 +15,17 @@ const allIds = contents.map((item) => item.id.replace(".md", ""));
 
 const tree = buildTree(allIds);
 
-const { minutesRead, title, description } = Astro.props;
+const { minutesRead, status, title, description } = Astro.props;
+
+// remove the last slash
+const pathname = new URL(Astro.request.url).pathname.slice(0, -1);
+const isNotFound = status === 404;
+
+const ogPath = isNotFound
+  ? "/404.jpeg"
+  : pathname.length < 2
+    ? "/og.png"
+    : `/open-graph${pathname}.png`;
 ---
 
 <html lang="en">
@@ -26,7 +37,7 @@ const { minutesRead, title, description } = Astro.props;
         basic: {
           title: title,
           type: "article",
-          image: "/og.png",
+          image: ogPath,
         },
         article: {
           authors: ["rinyato", "chearithorn"],
@@ -40,7 +51,7 @@ const { minutesRead, title, description } = Astro.props;
         card: "summary_large_image",
         title: title,
         site: "https://vault.rinyato.com",
-        image: "/og.png",
+        image: ogPath,
         description: description,
       }}
       extend={{
@@ -54,6 +65,36 @@ const { minutesRead, title, description } = Astro.props;
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <AstroFont
+      config={[
+        {
+          name: "iA Writer Duo",
+          src: [
+            {
+              style: "variable",
+              path: "./public/fonts/sans.ttf",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+        {
+          name: "iA Writer Mono",
+          src: [
+            {
+              style: "variable",
+              path: "./public/fonts/mono.ttf",
+            },
+          ],
+          preload: true,
+          display: "swap",
+          selector: "body",
+          fallback: "serif",
+        },
+      ]}
+    />
   </head>
   <body class="min-h-dvh no-scrollbar lg:flex overflow-x-clip">
     <Sidebar tree={tree} minutesRead={minutesRead} />

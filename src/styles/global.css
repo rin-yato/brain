@@ -1,14 +1,14 @@
 @tailwind base;
 
-@font-face {
-  font-family: "iA Writer Duo";
-  src: url("/fonts/sans.ttf");
-}
-
-@font-face {
-  font-family: "iA Writer Mono";
-  src: url("/fonts/mono.ttf");
-}
+/* @font-face { */
+/*   font-family: "iA Writer Duo"; */
+/*   src: url("/fonts/sans.ttf"); */
+/* } */
+/**/
+/* @font-face { */
+/*   font-family: "iA Writer Mono"; */
+/*   src: url("/fonts/mono.ttf"); */
+/* } */
 
 @layer base {
   :root {
@@ -176,7 +176,6 @@ body::before {
   background: url("../assets/noise.jpeg") repeat center;
 }
 
-
 #sidebar::before {
   @apply absolute inset-0 pointer-events-none opacity-35 dark:opacity-20;
   content: "";
@@ -184,8 +183,6 @@ body::before {
   background: url("../assets/noise.jpeg") repeat center;
   mix-blend-mode: overlay;
 }
-
-
 
 #floating-nav::before {
   @apply absolute rounded-full inset-0 mix-blend-overlay dark:mix-blend-multiply pointer-events-none dark:opacity-25 opacity-35;

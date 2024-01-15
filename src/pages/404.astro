@@ -5,7 +5,12 @@ import { Image } from "astro:assets";
 import NotFoundSvg from "@/assets/404.svg";
 ---
 
-<Layout minutesRead="404" title="404 - Not Found" description="???">
+<Layout
+  minutesRead="404"
+  status={404}
+  title="404 - Not Found"
+  description="???"
+>
   <Image
     src={NotFoundSvg}
     alt="404"
