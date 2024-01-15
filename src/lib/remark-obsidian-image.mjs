@@ -1,9 +1,8 @@
 import { visit } from "unist-util-visit";
 
 export function remarkObsidianImg() {
-  return (tree, file) => {
+  return (tree) => {
     visit(tree, "text", (node) => {
-
       const matches = node.value?.match(/!\[\[(.*\..*)\]\]/);
       if (!matches?.[0]) {
         return;

@@ -55,10 +55,8 @@ const { tree, minutesRead } = Astro.props;
 
     const state = localStorage.getItem("sidebar-open");
     const sidebar = document.getElementById("sidebar")!;
-    console.log(state);
 
     if (state === "true") {
-      console.log("here");
       sidebar.setAttribute("aria-expanded", "true");
     } else {
       sidebar.removeAttribute("aria-expanded");

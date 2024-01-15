@@ -16,8 +16,6 @@ const post = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
 
 const title = capitalize(post.slug.split("/").pop()?.replace(/-/g, " ") ?? "");
-
-console.log({ remarkPluginFrontmatter, post, title });
 ---
 
 <Layout {...post.data} {...remarkPluginFrontmatter} title={title}>
