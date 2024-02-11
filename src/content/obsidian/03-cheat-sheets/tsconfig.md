@@ -7,6 +7,10 @@ keyword: #keyword/typescript #keyword/tsconfig
 
 ---
 
+## TSConfig
+
+A tsConfig.json guide by Matt Pocock, the goat of typescript.
+
 ```json title="tsConfig.json"
 {
   "compilerOptions": {
