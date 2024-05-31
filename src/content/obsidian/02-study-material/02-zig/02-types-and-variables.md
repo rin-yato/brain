@@ -22,6 +22,7 @@ There are two ways of delaring a variable as you can see
 - `const` - for immutable variable or in simple term a variable that cannot be changed
 - `var` - for mutable variable or variable that can be changed later on in the program
 
+
 ## Data Type
 
 In this chapter, we'll only talk about simple primitive type. Integer, Boolean, String (maybe)...
@@ -30,7 +31,7 @@ In this chapter, we'll only talk about simple primitive type. Integer, Boolean, 
 
 The integer type comes in two form `u(n)` and `i(n)`, see the example below:
 
-```
+```zig
 // Here we are declaring that foo is an unsigned 8bits integer.
 // Unsigned integer can only contains positive number.
 // 8 bits is the amount of memory allocated to foo.

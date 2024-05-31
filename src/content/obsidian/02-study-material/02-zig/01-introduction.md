@@ -11,6 +11,7 @@ keyword: #keyword/zig
 
 Zig is a general-purpose programming language and toolchain for maintaining robust, optimal and reusable software.
 
+
 ## What does it look like?
 
 ```zig
@@ -22,6 +23,7 @@ pub fn main() void {
   std.debug.print("Hello, world!\n", .{}); 
 }
 ```
+
 
 ## Why Zig?
 
