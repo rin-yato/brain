@@ -9,7 +9,7 @@ keyword: #keyword/communication
 
 # Essential of Business Communication
 
-![[Pasted image 20240604000856.png]]
+![[09 Media/Pasted image 20240604000856.png]]
 
 
 ## Do you consider your daily texting, Facebook updates, blog entries, e-mails, and other informal writing to be “real writing”?
