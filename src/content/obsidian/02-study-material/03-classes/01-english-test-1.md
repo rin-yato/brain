@@ -35,4 +35,15 @@ Solid communication skills are crucial in the modern workplace. For example, a p
 ## Explain the importance of nonverbal communication and of improving your nonverbal communication skills?
 
 Nonverbal communication is vital for conveying messages, establishing rapport, and influencing interactions. It includes body language, facial expressions, gestures, eye contact, and space usage. Nonverbal cues can complement or contradict verbal messages, providing deeper insight into feelings, intentions, and reactions. Improving nonverbal communication skills can enhance interpersonal relationships, increase empathy, and contribute to a more harmonious and productive work environment.
+
+
+Remember, communication is key to everything.
+
+> It doesn't matter how great your app is, until you can tell your story.
+> 
+> — Steve Jobs
+
+So, keep upgrading your communication skill. Bye 👋🏻
+
+
      
