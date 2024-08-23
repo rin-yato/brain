@@ -44,7 +44,7 @@ const too_big: u8 = 10000; // Error: number too big
 const negative_foo: i8 = -2; // OK
 ```
 
-As you can tell, `u(n)` and `i(n)` behaving identically, the big difference is that `u(n)` cannot have negative number, while `i(n)` can!!
+As you can tell, `u(n)` and `i(n)` behave identically, the big difference is that `u(n)` cannot have negative number, while `i(n)` can!!
 
 What about the bit thingy? Well that's the amount of memory allocated for the number. For example 4 bits meaning 4 spots for the binary number 0000.
 
@@ -63,6 +63,8 @@ What about the bit thingy? Well that's the amount of memory allocated for the nu
 - 13 → `1101`
 - 14 → `1110`
 - 15 → `1111`
+
+In this case, a `u4` can only hold number from 0 - 15.
 
 
 

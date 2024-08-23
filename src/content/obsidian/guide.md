@@ -8,7 +8,7 @@ A guide on how to navigation and categorized my notes.
 
 ## Status
 
-- processed - I haven't reviewed it.
+- processed - I have reviewed it.
 - unprocessed - I just wrote it down without review.
 
 

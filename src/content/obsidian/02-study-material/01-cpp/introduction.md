@@ -134,5 +134,10 @@ int main() {
 
 And that's it for the basic, we'll dive deeper after I attend another class haha.
 
+## Update: 23-Aug-2024
+
+Yup, I never got to attend anymore class 😆.
+
+
 
 

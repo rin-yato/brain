@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env zsh
 
 # fetch notes
 bun run fetch
