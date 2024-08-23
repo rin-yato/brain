@@ -16,7 +16,7 @@ const { tree, indent = DEFAULT_INDENT } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname.slice(1);
 ---
 
-<div class="space-y-1 min-w-max">
+<div class="space-y-1 w-full">
   {
     tree.map((node) => {
       if (node.children) {
@@ -24,11 +24,11 @@ const pathname = new URL(Astro.request.url).pathname.slice(1);
           <label class="collapse relative h-min">
             <input
               type="checkbox"
-              class="peer relative z-10"
+              class="peer hidden pointer-events-none relative z-10"
               transition:persist
             />
             <div
-              class="capitalize peer-checked:[&>span>svg]:rotate-90 text-muted-foreground peer-hover:text-foreground py-1 h-min peer-hover:bg-gray-600/5 rounded-lg collapse-title"
+              class="capitalize peer-checked:[&>span>svg]:rotate-90 text-muted-foreground hover:text-foreground py-1 h-min hover:bg-gray-600/5 rounded-lg collapse-title"
               style={{ paddingLeft: indent + "px" }}
             >
               <span class="relative">
@@ -52,7 +52,7 @@ const pathname = new URL(Astro.request.url).pathname.slice(1);
           href={`/${node.path}`}
           class={cn(
             "block py-1 px-3 hover:bg-gray-600/5 rounded-lg capitalize text-muted-foreground hover:text-foreground",
-            node.path.startsWith(pathname) &&
+            pathname === node.path &&
               pathname !== "" &&
               pathname !== "/" &&
               "bg-primary text-primary-foreground leading-snug hover:text-primary-foreground hover:bg-primary",
