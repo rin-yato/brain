@@ -7,7 +7,7 @@ keyword: #keyword/react #keyword/global-state
 
 ---
 
-# A simple global state in React
+# Build your own global state in React
 
 ![[09 Media/Pasted image 20240823213739.png]]
 

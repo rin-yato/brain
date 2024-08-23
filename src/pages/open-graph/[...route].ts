@@ -41,14 +41,9 @@ export const { getStaticPaths, GET } = OGImageRoute({
   pages: pages,
 
   // For each page, this callback will be used to customize the OpenGraph image.
-  getImageOptions: (path, page) => {
-    const formattedDescription = page.description.slice(0, 60).concat("...");
-    const description =
-      page.description.length === 0 ? "" : formattedDescription;
-
+  getImageOptions: (_, page) => {
     return {
       title: page.title,
-      description: description,
 
       bgImage: {
         path: "./public/og-bg.png",
@@ -64,12 +59,6 @@ export const { getStaticPaths, GET } = OGImageRoute({
           lineHeight: 1.3,
           families: ["iA Writer Duo"],
           weight: "Bold",
-        },
-        description: {
-          size: 48,
-          lineHeight: 1.3,
-          families: ["iA Writer Duo"],
-          weight: "Normal",
         },
       },
       fonts: ["./public/fonts/sans.ttf"],

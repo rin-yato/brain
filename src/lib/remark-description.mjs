@@ -4,7 +4,10 @@ export function remarkDescription() {
   // use the first paragraph as the description
   return function (tree, { data }) {
     const description = tree.children.find(
-      (node, index) => node.type === "paragraph" && index !== 0,
+      (node, index) =>
+        node.type === "paragraph" &&
+        index !== 0 &&
+        !node.children.some((child) => child.type === "image"),
     );
 
     if (description) {
