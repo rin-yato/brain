@@ -1,15 +1,5 @@
 @tailwind base;
 
-/* @font-face { */
-/*   font-family: "iA Writer Duo"; */
-/*   src: url("/fonts/sans.ttf"); */
-/* } */
-/**/
-/* @font-face { */
-/*   font-family: "iA Writer Mono"; */
-/*   src: url("/fonts/mono.ttf"); */
-/* } */
-
 @layer base {
   :root {
     --primary: #a5bc79;
@@ -39,15 +29,16 @@
   body {
     @apply text-foreground bg-background relative;
   }
+
+  * {
+    @apply border-secondary selection:bg-primary selection:text-primary-foreground;
+  }
+
+  * {
+    @apply scrollbar scrollbar-track-transparent scrollbar-thumb-gray-500/40 scrollbar-thin;
+  }
 }
 
-* {
-  @apply border-secondary selection:bg-primary selection:text-primary-foreground;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 
 p:has(span.tag) {
   @apply !leading-[1.9];
@@ -60,20 +51,16 @@ span.tag {
 input[type="checkbox"] {
   @apply checkbox rounded appearance-none border-primary border-2 [--chkfg:transparent] [--chkbg:transparent];
   background-color: var(--chkbg) !important;
-  background-image: linear-gradient(
-      -45deg,
+  background-image: linear-gradient(-45deg,
       transparent 65%,
-      var(--chkbg) 65.99%
-    ),
+      var(--chkbg) 65.99%),
     linear-gradient(45deg, transparent 75%, var(--chkbg) 75.99%),
     linear-gradient(-45deg, var(--chkbg) 40%, transparent 40.99%),
-    linear-gradient(
-      45deg,
+    linear-gradient(45deg,
       var(--chkbg) 30%,
       var(--chkfg) 30.99%,
       var(--chkfg) 40%,
-      transparent 40.99%
-    ),
+      transparent 40.99%),
     linear-gradient(-45deg, var(--chkfg) 50%, var(--chkbg) 50.99%) !important;
 }
 
@@ -89,17 +76,11 @@ input[type="checkbox"][checked] {
   @apply align-middle my-4;
 }
 
-.prose
-  :where(blockquote p:last-of-type):not(
-    :where([class~="not-prose"], [class~="not-prose"] *)
-  )::after {
+.prose :where(blockquote p:last-of-type):not( :where([class~="not-prose"], [class~="not-prose"] *))::after {
   content: none;
 }
 
-.prose
-  :where(blockquote p:first-of-type):not(
-    :where([class~="not-prose"], [class~="not-prose"] *)
-  )::before {
+.prose :where(blockquote p:first-of-type):not( :where([class~="not-prose"], [class~="not-prose"] *))::before {
   content: none;
 }
 
@@ -107,17 +88,11 @@ input[type="checkbox"][checked] {
   @apply font-normal text-foreground;
 }
 
-.prose
-  :where(code):not(
-    :where([class~="not-prose"], [class~="not-prose"] *)
-  )::before {
+.prose :where(code):not( :where([class~="not-prose"], [class~="not-prose"] *))::before {
   content: none;
 }
 
-.prose
-  :where(code):not(
-    :where([class~="not-prose"], [class~="not-prose"] *)
-  )::after {
+.prose :where(code):not( :where([class~="not-prose"], [class~="not-prose"] *))::after {
   content: none;
 }
 
@@ -141,7 +116,7 @@ code[data-line-numbers] {
   counter-reset: line;
 }
 
-code[data-line-numbers] > [data-line]::before {
+code[data-line-numbers]>[data-line]::before {
   counter-increment: line;
   content: counter(line);
 
@@ -153,15 +128,15 @@ code[data-line-numbers] > [data-line]::before {
   color: gray;
 }
 
-code[data-line-numbers-max-digits="2"] > [data-line]::before {
+code[data-line-numbers-max-digits="2"]>[data-line]::before {
   width: 2rem;
 }
 
-code[data-line-numbers-max-digits="3"] > [data-line]::before {
+code[data-line-numbers-max-digits="3"]>[data-line]::before {
   width: 3rem;
 }
 
-span[data-rehype-pretty-code-figure] > code {
+span[data-rehype-pretty-code-figure]>code {
   @apply bg-secondary py-1.5 !px-3 rounded-xl;
 }
 
