@@ -45,7 +45,7 @@ p:has(span.tag) {
 }
 
 span.tag {
-  @apply text-sm md:text-base lg:text-lg bg-secondary px-3 py-1 mr-1 rounded-2xl;
+  @apply text-sm md:text-base lg:text-lg bg-secondary px-3 py-0.5 mr-1 rounded-2xl;
 }
 
 input[type="checkbox"] {
@@ -97,7 +97,7 @@ input[type="checkbox"][checked] {
 }
 
 code {
-  @apply !bg-secondary py-1.5 px-3 rounded-xl;
+  @apply !bg-secondary py-0.5 px-3 rounded-lg;
 }
 
 code[data-theme*=" "],
@@ -136,12 +136,13 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
   width: 3rem;
 }
 
+
 span[data-rehype-pretty-code-figure]>code {
   @apply bg-secondary py-1.5 !px-3 rounded-xl;
 }
 
 figcaption[data-rehype-pretty-code-title] {
-  @apply text-base md:text-lg bg-secondary px-5 pb-5 pt-4 translate-y-4 rounded-t-2xl;
+  @apply text-base md:text-lg bg-secondary px-5 pb-5 pt-4 translate-y-4 rounded-t-2xl !mt-0;
 }
 
 body::before {
