@@ -8,11 +8,11 @@ export function rehypeHashtags() {
       }
 
       function processHashtags(text) {
-        const hashtags = text.match(/#\w+\/\w+/g);
+        const hashtags = text.match(/#\w+[-/\w]+/g);
 
         if (hashtags) {
           const processedChildren = text
-            .split(/#\w+\/\w+/g)
+            .split(/#\w+[-/\w]+/g)
             .flatMap((part, index) => [
               { type: "text", value: part },
               index > 0 && {
