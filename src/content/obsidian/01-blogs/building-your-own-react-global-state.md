@@ -86,6 +86,8 @@ Well..., that's it! Okay, let's break it down.
 2. It subscribes to store, whenever there is any change, it will increment the revision state by 1. This will force the component that uses the hook to re-render (simple yet effective 😆)
 3. Finally it returns a getter and setter to read and write to the store
 
+![[09 Media/Video Optimized.gif]]
+
 
 ## So, How do we use it?
 
